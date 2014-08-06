@@ -2,14 +2,17 @@
 
 def interactive_menu
 	loop do
-		# First, print a menu and get the user's input
+		# Attempt to load the list of students
 		try_load_students
+		# Print a menu of options for the user
 		print_menu
+		# Get input from the user and pass it to 'process' method which selects an option
 		process(STDIN.gets.chomp)
 	end
 end
 
 def process(selection)
+	# Takes the option from the user and chooses the appropriate method
 	case selection
 	when "1"
 		input_students
@@ -27,6 +30,7 @@ def process(selection)
 end
 
 def print_menu
+	# Prints the menu
 		puts "1. Input students"
 		puts "2. Show students"
 		puts "3. Save students"
@@ -35,14 +39,15 @@ def print_menu
 end
 
 def show_students
+	# Shows the current list of students in memory
 	print_header
 	print_students_list
 	print_footer
 end
 
 def input_students
-	puts "Please enter the names, cohort and hobby of the students"
-	puts "To finish, just hit return thrice"
+	puts "Please enter the names, cohort and hobby of the students."
+	puts "To finish, just make a blank entry."
 	# get the first name
 	name = STDIN.gets.chomp
 	cohort = STDIN.gets.chomp.downcase.to_sym
@@ -50,19 +55,23 @@ def input_students
 	hobby = STDIN.gets.chomp
 	# while the name is not empty, repeat this code
 	while !name.empty? do
-	# add the student hash to the array
-	@students << {:name => name, :cohort => cohort, :hobby => hobby}
-	puts "Now we have #{@students.length} student" if @students.length == 1
-	puts "Now we have #{@students.length} students" if @students.length >= 2
-	# get another name from the user
-	name = STDIN.gets.chomp
-	cohort = STDIN.gets.chomp.downcase.to_sym
-	cohort = :august if cohort.empty?
-	hobby = STDIN.gets.chomp
+		
+		# add the student hash to the array
+		@students << {:name => name, :cohort => cohort, :hobby => hobby}
+		puts "Now we have #{@students.length} student" if @students.length == 1
+		puts "Now we have #{@students.length} students" if @students.length >= 2
+		
+		# get another name from the user
+		name = STDIN.gets.chomp
+		cohort = STDIN.gets.chomp.downcase.to_sym
+		cohort = :august if cohort.empty?
+		hobby = STDIN.gets.chomp
+	
 	end
 end
 
 def print_header
+	# Prints header for the list of students
 	puts "The students of the August cohort at Makers Academy:"
 end
 
