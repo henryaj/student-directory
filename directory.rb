@@ -13,7 +13,7 @@ end
 
 def process(selection)
 	# Takes the option from the user and chooses the appropriate method
-	case selection
+	case selection.downcase
 	when "1"
 		input_students
 	when "2"
@@ -36,6 +36,7 @@ def print_menu
 		puts "3. Save students"
 		puts "4. Load students"
 		puts "9. Exit"
+		print "> "
 end
 
 def show_students
