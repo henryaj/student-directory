@@ -59,8 +59,7 @@ def input_students
 		
 		# add the student hash to the array
 		add_students(name, cohort, hobby)
-		puts "Now we have #{@students.length} student" if @students.length == 1
-		puts "Now we have #{@students.length} students" if @students.length >= 2
+		puts "Now we have #{@students.length} student#{"s" if @students.length >= 2}"
 		
 		# get another name from the user
 		name = STDIN.gets.chomp
