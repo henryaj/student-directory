@@ -1,3 +1,5 @@
+require 'csv'
+
 @students = []
 
 def interactive_menu
@@ -57,12 +59,7 @@ def print_header
 end
 
 def load_students(filename = 'students.csv')
-	File.open(filename, "r") do |file|
-		file.readlines.each do |line|
-			name, cohort, hobby = line.chomp.split(',')
-			add_students(name, cohort, hobby)
-		end
-	end
+	CSV.foreach(filename) { |line| add_students(line[0], line[1], line[2]) }
 	puts "Students loaded from file!"
 end
 
