@@ -54,13 +54,10 @@ def input_students
 		# add the student hash to the array
 		add_students(name, cohort, hobby)
 		puts "Now we have #{@students.length} student#{"s" if @students.length >= 2}"
-		
 		# get another name from the user
 		name = STDIN.gets.chomp
-		cohort = STDIN.gets.chomp.downcase.to_sym
-		cohort = :august if cohort.empty?
+		cohort = STDIN.gets.chomp.downcase.to_sym ||= :august
 		hobby = STDIN.gets.chomp
-	
 	end
 end
 
@@ -106,9 +103,7 @@ def try_load_students
 	# Attempts to load a list of students from a command line argument, if one was given
 	filename = ARGV.first #1st argument from cmd line
 	return if filename.nil? #get out if no filename
-	if File.exists?(filename) #if it exists
-		load_students(filename)
-		puts "Loaded #{@students.length} from #{filename}"
+	if File.exists?(filename) { load_students(filename) &&	puts "Loaded #{@students.length} from #{filename}" }
 	else #if it doesn't exist
 		puts "Sorry, #{filename} doesn't exist."
 		exit
