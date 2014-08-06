@@ -2,7 +2,7 @@
 
 def interactive_menu
 	loop do
-		# Attempt to load the list of students
+		# Attempt to load the list of students from file
 		try_load_students
 		# Print a menu of options for the user
 		print_menu
