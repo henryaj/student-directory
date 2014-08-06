@@ -104,7 +104,7 @@ def add_students(name, cohort, hobby)
 end
 
 def print_students_list
-	@students.each_with_index { |student, index| puts "#{index+1} #{student[:name]} (#{student[:cohort]} cohort) #{student[:hobby]}"}
+	@students.each_with_index { |student, index| puts "#{index+1} #{student[:name]} (#{student[:cohort]} cohort), hobby: #{student[:hobby]}"}
 end
 
 def try_load_students
