@@ -55,7 +55,7 @@ def input_students
 	cohort = :august if cohort.empty?
 	hobby = STDIN.gets.chomp
 	# while the name is not empty, repeat this code
-	while !name.empty? do
+	until name.empty? do
 		
 		# add the student hash to the array
 		add_students(name, cohort, hobby)
@@ -91,11 +91,12 @@ end
 
 def load_students(filename = 'students.csv')
 	# Loads a list of students from a csv file. If no filename is specified, defaults to students.csv
-	file = File.new(filename, "r")
+	file = File.open(filename, "r")
 	file.readlines.each do |line|
 		name, cohort, hobby = line.chomp.split(',') # Reads a line of the .csv file, removes the trailing line break, splits at the comma and saves each chunk into three variables
 		add_students(name, cohort, hobby) # Passes those variables to the add_students method, which saves them to the array
 		end
+	file.close
 	puts "Students loaded from file!"
 end
 
