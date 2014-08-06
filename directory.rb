@@ -103,7 +103,9 @@ def try_load_students
 	# Attempts to load a list of students from a command line argument, if one was given
 	filename = ARGV.first #1st argument from cmd line
 	return if filename.nil? #get out if no filename
-	if File.exists?(filename) { load_students(filename) &&	puts "Loaded #{@students.length} from #{filename}" }
+	if File.exists?(filename) #if it exists
+		load_students(filename)
+		puts "Loaded #{@students.length} from #{filename}"
 	else #if it doesn't exist
 		puts "Sorry, #{filename} doesn't exist."
 		exit
