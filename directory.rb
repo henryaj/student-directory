@@ -75,16 +75,6 @@ def print_header
 	puts "The students of the August cohort at Makers Academy:"
 end
 
-def print_students_list
-	@students.each_with_index { |student, index| puts "#{index+1} #{student[:name]} (#{student[:cohort]} cohort) #{student[:hobby]}"}
-end
-
-def print_by_cohort
-	@students.sort[:cohort]
-	puts "Here are the students by cohort:"
-	@students.each { |student| puts "#{student[:name]}, #{student[:cohort]}" }
-end
-
 def save_students
 	# open the file for writing
 	file = File.open("students.csv", "w")
@@ -99,6 +89,7 @@ def save_students
 end
 
 def load_students(filename = 'students.csv')
+	# Loads a list of students from a csv file. If no filename is specified, defaults to students.csv
 	file = File.open(filename, "r")
 	file.readlines.each do |line|
 		name, cohort, hobby = line.chomp.split(',')
@@ -109,19 +100,21 @@ def load_students(filename = 'students.csv')
 end
 
 def try_load_students
+	# Attempts to load a list of students from a command line argument, if one was given
 	filename = ARGV.first #1st argument from cmd line
 	return if filename.nil? #get out if no filename
 	if File.exists?(filename) #if it exists
 		load_students(filename)
 		puts "Loaded #{@students.length} from #{filename}"
 	else #if it doesn't exist
-		puts "Sorry #{filename} doesn't exist."
+		puts "Sorry, #{filename} doesn't exist."
 		exit
 	end
 end
 
 def print_footer
-	puts "Overall, we have #{@students.length} great students"
+	# Prints footer for use after the list of students
+	puts "Overall, we have #{@students.length} great students."
 end
 
 interactive_menu
