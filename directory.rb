@@ -67,7 +67,10 @@ def load_students
 end
 
 def save_students
-	file = File.open("students.csv", "w")
+	puts "Type the name of the file you wish to save to."
+	print "> "
+	filename = STDIN.gets.chomp
+	file = File.open(filename, "w")
 	@students.each do |student|
 		student_data = [student[:name], student[:cohort], student[:hobby]]
 		csv_line = student_data.join(",")
