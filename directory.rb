@@ -103,6 +103,10 @@ def add_students(name, cohort, hobby)
 	@students << {:name => name, :cohort => cohort.to_sym, :hobby => hobby}
 end
 
+def print_students_list
+	@students.each_with_index { |student, index| puts "#{index+1} #{student[:name]} (#{student[:cohort]} cohort) #{student[:hobby]}"}
+end
+
 def try_load_students
 	# Attempts to load a list of students from a command line argument, if one was given
 	filename = ARGV.first #1st argument from cmd line
