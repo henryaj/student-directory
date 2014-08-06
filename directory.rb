@@ -91,12 +91,11 @@ end
 
 def load_students(filename = 'students.csv')
 	# Loads a list of students from a csv file. If no filename is specified, defaults to students.csv
-	file = File.open(filename, "r")
+	file = File.new(filename, "r")
 	file.readlines.each do |line|
 		name, cohort, hobby = line.chomp.split(',') # Reads a line of the .csv file, removes the trailing line break, splits at the comma and saves each chunk into three variables
 		add_students(name, cohort, hobby) # Passes those variables to the add_students method, which saves them to the array
 		end
-	file.close
 	puts "Students loaded from file!"
 end
 
