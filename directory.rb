@@ -57,7 +57,7 @@ def input_students
 	while !name.empty? do
 		
 		# add the student hash to the array
-		@students << {:name => name, :cohort => cohort, :hobby => hobby}
+		add_students(name, cohort, hobby)
 		puts "Now we have #{@students.length} student" if @students.length == 1
 		puts "Now we have #{@students.length} students" if @students.length >= 2
 		
@@ -92,11 +92,15 @@ def load_students(filename = 'students.csv')
 	# Loads a list of students from a csv file. If no filename is specified, defaults to students.csv
 	file = File.open(filename, "r")
 	file.readlines.each do |line|
-		name, cohort, hobby = line.chomp.split(',')
-		@students << {:name => name, :cohort => cohort.to_sym, :hobby => hobby}
+		name, cohort, hobby = line.chomp.split(',') # Reads a line of the .csv file, removes the trailing line break, splits at the comma and saves each chunk into three variables
+		add_students(name, cohort, hobby) # Passes those variables to the add_students method, which saves them to the array
 		end
 	file.close
 	puts "Students loaded from file!"
+end
+
+def add_students(name, cohort, hobby)
+	@students << {:name => name, :cohort => cohort.to_sym, :hobby => hobby}
 end
 
 def try_load_students
