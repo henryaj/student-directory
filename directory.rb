@@ -92,7 +92,6 @@ end
 
 def add_students(name, cohort, hobby)
 	@students << {:name => name, :cohort => cohort.to_sym, :hobby => hobby}
-	print "Student saved. "
 end
 
 def print_students_list
