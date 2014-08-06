@@ -13,19 +13,13 @@ end
 
 def process(selection)
 	# Takes the option from the user and chooses the appropriate method
-	case selection.downcase
-	when "1" 
-		input_students
-	when "2"
-		show_students
-	when "3"
-		save_students
-	when "4"
-		load_students
-	when "9"
-		exit 
-	else
-		puts "I don't know what you meant, try again."
+	case selection
+	when "1" then	input_students
+	when "2" then show_students
+	when "3" then save_students
+	when "4" then load_students
+	when "9" then exit 
+	else					puts "I don't know what you meant, try again."
 	end
 end
 
@@ -50,10 +44,10 @@ def input_students
 	puts "Please enter the names, cohort and hobby of the students."
 	puts "To finish, just make a blank entry."
 	# get the first name
-	name = STDIN.gets.chomp
-	cohort = STDIN.gets.chomp.downcase.to_sym
-	cohort = :august if cohort.empty?
-	hobby = STDIN.gets.chomp
+	name 		= STDIN.gets.chomp
+	cohort 	= STDIN.gets.chomp.downcase.to_sym
+	cohort 	= :august if cohort.empty?
+	hobby 	= STDIN.gets.chomp
 	# while the name is not empty, repeat this code
 	until name.empty? do
 		
@@ -63,10 +57,10 @@ def input_students
 		puts "Now we have #{@students.length} students" if @students.length >= 2
 		
 		# get another name from the user
-		name = STDIN.gets.chomp
-		cohort = STDIN.gets.chomp.downcase.to_sym
-		cohort = :august if cohort.empty?
-		hobby = STDIN.gets.chomp
+		name 		= STDIN.gets.chomp
+		cohort 	= STDIN.gets.chomp.downcase.to_sym
+		cohort 	= :august if cohort.empty?
+		hobby 	= STDIN.gets.chomp
 	
 	end
 end
