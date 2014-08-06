@@ -4,7 +4,6 @@ require 'csv'
 
 def interactive_menu
 	loop do
-		try_load_students
 		print_menu
 		process(STDIN.gets.chomp)
 	end
@@ -104,4 +103,5 @@ def print_footer
 	puts "Overall, we have #{@students.length} great students."
 end
 
+try_load_students
 interactive_menu
