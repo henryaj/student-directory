@@ -111,42 +111,6 @@ def try_load_students
 	end
 end
 
-
-=begin
-def print_while(students)
-	puts "(Printing students with while condition)"
-	i = 0
-	until i >= students.length 
-		puts "#{students[i][:name]}".center(20, "-------")
-		i += 1
-	end
-end
-
-def print_A(students)
-	puts "And the students whose names start with A are:"
-	students.each { |student| puts "#{student[:name]}" if student[:name].start_with?("A") }
-end
-
-def print_short(names)
-	puts "Students with names shorter than 12 chars:"
-	names.each { |student| puts "#{student[:name]}" if student[:name].length < 12 }
-end
-=end
-
 def print_footer
 	puts "Overall, we have #{@students.length} great students"
 end
-
-
-
-#students = input_students
-
-#print_header
-#print(students)
-#print_A(students)
-
-#print_footer(students)
-#print_while(students)
-#print_by_cohort(students)
-
-interactive_menu
