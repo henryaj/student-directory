@@ -46,8 +46,7 @@ def input_students
 	puts "To finish, just make a blank entry."
 	# get the first name
 	name = STDIN.gets.chomp
-	cohort = STDIN.gets.chomp.downcase.to_sym
-	cohort = :august if cohort.empty?
+	cohort = STDIN.gets.chomp.downcase.to_sym ||= :august
 	hobby = STDIN.gets.chomp
 	# while the name is not empty, repeat this code
 	until name.empty? do
