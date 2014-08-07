@@ -33,10 +33,7 @@ end
 def show_students
 	puts "Sort students by name, cohort, or hobby?"
 	puts "> "
-	sort = STDIN.gets.chomp
-	print_header
-	print_students_list(sort)
-	print_footer
+	print_students_list(STDIN.gets.chomp)
 end
 
 def input_students
@@ -54,10 +51,6 @@ def get_input
 	@name 	= STDIN.gets.chomp
 	@cohort = STDIN.gets.chomp ||= :august # ensures default value of :august
 	@hobby 	= STDIN.gets.chomp
-end
-
-def print_header
-	puts "The students at Makers Academy:"
 end
 
 def load_students
@@ -82,10 +75,10 @@ def add_students(name, cohort, hobby)
 end
 
 def print_students_list(sort)
-	@students.sort_by! do |student|
-		student[sort.to_sym]
-	end
+	@students.sort_by! { |student| student[sort.to_sym] }
+	puts "The students at Makers Academy:"
 	@students.each_with_index { |student, index| puts "#{index+1} #{student[:name]} (#{student[:cohort]} cohort), hobby: #{student[:hobby]}"}
+	puts "Overall, we have #{@students.length} great students."
 end
 
 def try_load_students
@@ -98,10 +91,6 @@ def try_load_students
 		puts "Sorry, #{filename} doesn't exist."
 		exit
 	end
-end
-
-def print_footer
-	puts "Overall, we have #{@students.length} great students."
 end
 
 try_load_students
