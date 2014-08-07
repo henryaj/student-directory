@@ -64,8 +64,7 @@ end
 def save_students
 	puts 	"Type the name of the file you wish to save to."
 	print "> "
-	filename 	= STDIN.gets.chomp
-	CSV.open(filename, "w") do |csv|
+	CSV.open(STDIN.gets.chomp, "w") do |csv|
 		@students.each { |student| csv << student.values }
 	end
 end
