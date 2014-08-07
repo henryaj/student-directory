@@ -1,6 +1,9 @@
 Student Directory
 =================
 
+| *Makers Academy* | Week 1 |
+| ---------------- | ------ |
+
 The student directory script allows you to manage the list of students enrolled on the course at Makers Academy! It accepts typed input, or can import a list of students from (and save to) a .csv file.
 
 How to Use
