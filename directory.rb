@@ -58,11 +58,11 @@ def print_header
 end
 
 def load_students
-	puts 	"Type the name of the file you wish to import from."
+	puts "Type the name of the file you wish to import from."
 	print "> "
 	filename = STDIN.gets.chomp
 	CSV.foreach(filename) { |line| add_students(line[0], line[1], line[2]) }
-	puts 	"Students loaded from file!"
+	puts "Students loaded from file!"
 end
 
 def save_students
