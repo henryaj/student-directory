@@ -86,7 +86,7 @@ def try_load_students
 	filename = ARGV.first
 	return if filename.nil? # End the method immediately if user didn't specify a filename at runtime
 	if File.exists?(filename)
-		load_students(filename)
+		CSV.foreach(filename) { |line| add_students(line[0], line[1], line[2]) }
 		puts "Loaded #{@students.length} from #{filename}"
 	else
 		puts "Sorry, #{filename} doesn't exist."
