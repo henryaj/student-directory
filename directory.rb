@@ -31,8 +31,11 @@ def print_menu
 end
 
 def show_students
+	puts "Sort students by name, cohort, or hobby?"
+	puts "> "
+	sort = STDIN.gets.chomp
 	print_header
-	print_students_list
+	print_students_list(sort)
 	print_footer
 end
 
@@ -70,7 +73,7 @@ def save_students
 	print "> "
 	filename 	= STDIN.gets.chomp
 	CSV.open(filename, "w") do |csv|
-	 @students.each { |student| csv << student.values }
+		@students.each { |student| csv << student.values }
 	end
 end
 
@@ -78,7 +81,10 @@ def add_students(name, cohort, hobby)
 	@students << {:name => name, :cohort => cohort.to_sym, :hobby => hobby}
 end
 
-def print_students_list
+def print_students_list(sort)
+	@students.sort_by! do |student|
+		student[sort.to_sym]
+	end
 	@students.each_with_index { |student, index| puts "#{index+1} #{student[:name]} (#{student[:cohort]} cohort), hobby: #{student[:hobby]}"}
 end
 
