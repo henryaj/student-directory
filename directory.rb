@@ -22,11 +22,11 @@ def process(selection)
 end
 
 def print_menu
-		puts "1. Input students"
-		puts "2. Show students"
-		puts "3. Save students"
-		puts "4. Load students"
-		puts "9. Exit"
+		puts 	"1. Input students"
+		puts 	"2. Show students"
+		puts 	"3. Save students"
+		puts 	"4. Load students"
+		puts 	"9. Exit"
 		print "> "
 end
 
@@ -48,33 +48,34 @@ def input_students
 end
 
 def get_input
-	@name = STDIN.gets.chomp
+	@name 	= STDIN.gets.chomp
 	@cohort = STDIN.gets.chomp ||= :august # ensures default value of :august
-	@hobby = STDIN.gets.chomp
+	@hobby 	= STDIN.gets.chomp
 end
 
 def print_header
-	puts "The students of the August cohort at Makers Academy:"
+	puts "The students at Makers Academy:"
 end
 
 def load_students
-	puts "Type the name of the file you wish to import from."
+	puts 	"Type the name of the file you wish to import from."
 	print "> "
 	filename = STDIN.gets.chomp
 	CSV.foreach(filename) { |line| add_students(line[0], line[1], line[2]) }
-	puts "Students loaded from file!"
+	puts 	"Students loaded from file!"
 end
 
 def save_students
-	puts "Type the name of the file you wish to save to."
+	puts 	"Type the name of the file you wish to save to."
 	print "> "
-	filename = STDIN.gets.chomp
-	file = File.open(filename, "w")
+	filename 	= STDIN.gets.chomp
+	file 			= File.open(filename, "w")
 	@students.each do |student|
-		student_data = [student[:name], student[:cohort], student[:hobby]]
-		csv_line = student_data.join(",")
+		student_data 	= [student[:name], student[:cohort], student[:hobby]]
+		csv_line 			= student_data.join(",")
 		file.puts csv_line
 	end
+
 	puts "Students saved!"
 	file.close
 end
@@ -89,7 +90,7 @@ end
 
 def try_load_students
 	filename = ARGV.first
-	return if filename.nil?
+	return if filename.nil? # End the method immediately if user didn't specify a filename at runtime
 	if File.exists?(filename)
 		load_students(filename)
 		puts "Loaded #{@students.length} from #{filename}"
