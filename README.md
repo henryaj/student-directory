@@ -16,3 +16,11 @@ Clone this repository to your computer. Then, at the command prompt, ```cd``` in
 ```shell
 $ ruby directory.rb
 ```
+
+If you want to load up a CSV file containing student information, you can specify this as an argument when running the script:
+
+```shell
+$ ruby directory.rb <FILENAME>.csv
+```
+
+Your CSV file should be in the format *student name*, *student cohort month*, *student hobby*.
